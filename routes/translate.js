@@ -7,9 +7,11 @@ const translator = require('../modules/translator');
 router.get('/:word/:lang', async (req, res, next) => {
   try {
     const result = await translator.translate(req.params.word, req.params.lang);
-    res.json({ status: 200, result: result });
+    res.status(200);
+    res.json({ result: result });
   } catch(e) {
-    res.json({ status: 500, message: e.message });
+    res.status(500);
+    res.json({ message: e.message });
   }
 });
 
@@ -17,9 +19,11 @@ router.get('/:word/:lang', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const result = await translator.translate(req.body.word, req.body.to);
-    res.json({ status: 200, result: result });
+    res.status(200);
+    res.json({ result: result });
   } catch(e) {
-    res.json({ status: 500, message: e.message });
+    res.status(500);
+    res.json({ message: e.message });
   }
 });
 
